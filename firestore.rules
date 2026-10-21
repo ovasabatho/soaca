@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    match /members/{memberId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    match /dues_periods/{periodId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    match /dues_payments/{paymentId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    match /songs/{songId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    match /orders_of_mass/{orderId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    match /quiz_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAuthenticated();
+    }
+
+    match /activity_logs/{logId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

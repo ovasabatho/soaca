@@ -1,0 +1,8 @@
+{
+  "name": "SOACA Portal",
+  "description": "Official portal for SOACA members, dues tracking, and updates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
