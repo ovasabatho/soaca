@@ -25,6 +25,7 @@ import { calculatePeriodDuesSummary } from '@/lib/dues';
 import { PWAInstallButton } from '@/components/PWAInstallButton';
 import { DailyMusicQuoteBanner } from '@/components/DailyMusicQuoteBanner';
 import { YesterdayMusicGuruBanner } from '@/components/YesterdayMusicGuruBanner';
+import { BirthdayCelebrationBanner } from '@/components/BirthdayCelebrationBanner';
 import { subscribeToQuizScores, getYesterdayMusicGuru, getReigningMusicGuruData } from '@/lib/firestore';
 import { getTodayDateKey } from '@/lib/format';
 import type { QuizScore } from '@/types';
@@ -265,6 +266,9 @@ export function Dashboard({ members = [], periods = [], payments = [], loading, 
           </div>
         )}
       </div>
+
+      {/* Birthday Celebration Banner (Today & Next 30 Days) */}
+      <BirthdayCelebrationBanner members={members} />
 
       {/* Daily Reigning Music Guru Spotlight Banner */}
       <YesterdayMusicGuruBanner
